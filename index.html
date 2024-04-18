@@ -22,16 +22,10 @@
 
     <div class="menu">
       <div class="menu-time">
-        <h2>Time Left</h2>
-        <h3 id="time-left">0</h3>
+        <h2>Time Left: <span id="time-left">0</span></h2>
       </div>
       <div class="menu-score">
-        <h2>Your Score</h2>
-        <h3 id="score">0</h3>
-      </div>
-      <div class="high-score">
-        <h2>High Score:</h2>
-        <h3 id="high-score">0</h3>
+        <h2>Your Score: <span id="score">0</span></h2>
       </div>
     </div>
 
@@ -44,7 +38,6 @@
 
       <div class="panel-row">
         <div class="square enemy" id="4"></div>
-        <button id="startButton">Start Game</button>
         <div class="square" id="5"></div>
         <div class="square" id="6"></div>
       </div>
@@ -56,6 +49,27 @@
       </div>
     </div>
   </div>
+
+  <!-- Overlay inicial -->
+  <div id="overlay" class="overlay">
+    <div class="game-title">
+        <h1>Wreck-It Ralph</h1>
+        <h2>The Tap Game</h2>
+    </div>  
+    <div class="overlay-content">
+        <h3>High Score: <span id="high-score">0</span></h3>
+        <button id="startButton" class="start-button">Start Game</button>
+    </div>
+</div>
+
+<!-- Overlay de resultado -->
+<div id="resultOverlay" class="overlay">
+    <div class="overlay-content">
+        <h3>Your Score: <span id="your-score">0</span></h3>
+        <h3>High Score: <span id="your-high-score">0</span></h3>
+        <button id="restartButton" class="restart-button">Reestar Game</button>
+    </div>
+</div>
 
   <script defer src="./src/scripts/engine.js"></script>
 </body>

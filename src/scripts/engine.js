@@ -4,8 +4,13 @@ const state = {
         enemy: document.querySelector(".enemy"),
         timeLeft: document.querySelector("#time-left"),
         score: document.querySelector("#score"),
-        highScoreDisplay: document.querySelector("#high-score"), // Seleciona o elemento do high score
+        highScoreDisplay: document.querySelector("#high-score"), 
         startButton: document.querySelector("#startButton"),
+        overlay: document.querySelector("#overlay"),
+        resultOverlay: document.querySelector("#resultOverlay"),
+        yourScore: document.querySelector("#your-score"),
+        yourHighScore: document.querySelector("#your-high-score"),
+        restartButton: document.querySelector("#restartButton"),
     },
     values: {
         gameSpeed: 500,
@@ -22,11 +27,11 @@ const state = {
     },
 };
 
-function playSound() {
-    let audio = new Audio("./src/audios/hit.m4a");
-    audio.volume = 0.2
-    audio.play();
-}
+// function playSound() {
+//     let audio = new Audio("./src/audios/hit.m4a");
+//     audio.volume = 0.2
+//     audio.play();
+// }
 
 function countDown() {
     state.values.currentTime--;
@@ -54,7 +59,7 @@ function addListenerHitBox() {
             if (state.values.isGameRunning && square.id === state.values.hitPosition) {
                 state.values.result++;
                 state.view.score.textContent = state.values.result;
-                updateHighScore(); // Atualiza o high score ao marcar um ponto
+                updateHighScore(); 
                 playSound();
             }
         });
@@ -65,11 +70,12 @@ function updateHighScore() {
     if (state.values.result > state.values.highScore) {
         state.values.highScore = state.values.result;
         localStorage.setItem("highScore", state.values.highScore);
-        state.view.highScoreDisplay.textContent = "High Score: " + state.values.highScore;
+        state.view.highScoreDisplay.textContent = state.values.highScore;
     }
 }
 
 function startGame() {
+    state.view.overlay.style.display = "none"; // Esconde o overlay de início
     state.values.isGameRunning = true;
     state.values.result = 0;
     state.values.currentTime = 60;
@@ -89,21 +95,22 @@ function endGame() {
     clearInterval(state.actions.timerId);
     clearInterval(state.actions.countDownTimerId);
 
-    if (state.values.result > state.values.highScore) {
-        state.values.highScore = state.values.result;
-        localStorage.setItem("highScore", state.values.highScore);
-        state.view.highScoreDisplay.textContent = "High Score: " + state.values.highScore;
-        alert("Parabéns! Você alcançou um novo High Score de " + state.values.highScore + " pontos!");
-    } else {
-        alert("GAME OVER! A sua pontuação foi de " + state.values.result + " pontos");
-    }
+    state.view.yourScore.textContent = state.values.result; // Atualiza o seu score
+    state.view.yourHighScore.textContent = state.values.highScore; // Atualiza o seu high score
 
-    state.view.startButton.style.display = "block";
+    state.view.resultOverlay.style.display = "block"; // Mostra o overlay de resultado
+
+    state.view.restartButton.addEventListener("click", () => {
+        state.view.resultOverlay.style.display = "none"; // Esconde o overlay de resultado
+        startGame();
+    });
 }
 
 function initialize() {
     state.view.highScoreDisplay.textContent = state.values.highScore;
     state.view.startButton.addEventListener("click", startGame);
+
+    state.view.overlay.style.display = "block"; // Mostra o overlay de início
 }
 
 initialize();

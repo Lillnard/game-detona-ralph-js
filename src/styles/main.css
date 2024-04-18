@@ -5,25 +5,89 @@
     background-image: url("../images/wall.png");
   }
 
-  #startButton {
-    margin: 35px 0 0 -40px;
-    height: 75px;
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.897);
+    z-index: 1000;
+}
+
+.overlay-content {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    text-align: center;
+    font-size: 25px;
+}
+
+.game-title{
+    width: 500px;
+    height: 200px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffffd3;
+    color: #ff0000;
+    margin: 50px auto 100px;
+}
+
+.game-title h1{
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.game-title h2{
+    font-size: 28px;
+}
+
+.overlay-content h3{
+    background-image: linear-gradient(45deg, #ff0000, #ff3c00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 10PX;
+    margin-top: 150px;
+}
+
+.start-button, .restart-button {
+    margin: 30px auto;
+    height: 75px;
     padding: 10px 20px;
     font-size: 1.2rem;
-    background-color: #ff0000;
+    background-image: linear-gradient(45deg, #ff0000, #ff3c00);
     color: #000000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: .3s;
-    }
+}
 
-  #startButton:hover {
+.start-button:hover, .restart-button:hover {
     transform: scale(1.1);
-    box-shadow: inset 0 0 10px rgb(63, 0, 0);
-  }
+    box-shadow: inset 0 0 10px rgb(48, 0, 0);
+}
 
+.start-button:focus, .restart-button:focus {
+    outline: none;
+}
+
+.overlay-content h3 {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.overlay-content h3 span{
+    color: #ffffff;
+}
 
 .menu {
     display: flex;
@@ -36,27 +100,11 @@
     border-top: 5px solid #ffd700;
 }
 .menu h2 {
-    color: #ff0000;
+    background-image: linear-gradient(45deg, #ff0000, #ff3c00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-
-.menu h3 {
-    color: #ffffff;
-}
-
-.menu-time{
-    display: flex;
-    gap: 30px;
-}
-
-.menu-score{
-    display: flex;
-    gap: 30px;
-}
-.high-score{
-    display: flex;
-    gap: 30px;
-}
-
 
 .panel {
     margin-top: 1rem;
@@ -90,6 +138,19 @@
 
 @media screen and (max-width: 500px){
 
+    .game-title{
+        width: 350px;
+    }
+
+    .game-title h1{
+        font-size: 35px;
+        margin-bottom: 20px;
+    }
+    
+    .game-title h2{
+        font-size: 28px;
+    }
+    
     .square {
         height: 120px;
         width: 120px;
