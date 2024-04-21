@@ -15,6 +15,7 @@
   <!-- styles -->
   <link rel="stylesheet" href="./src/styles/reset.css">
   <link rel="stylesheet" href="./src/styles/main.css">
+
 </head>
 
 <body>
@@ -57,9 +58,26 @@
         <h2>The Tap Game</h2>
     </div>  
     <div class="overlay-content">
-        <h3>High Score: <span id="high-score">0</span></h3>
+        <h3 id="high-score-txt">High Score: <span id="high-score">0</span></h3>
         <button id="startButton" class="start-button">Start Game</button>
-    </div>
+        <button class="how-to-play" id="how-to-play">How to play</button>
+        <div class="tutorial hide" id="tutorial">
+          <div class="tutorial-close" id="tutorial-close">
+            X
+          </div><!-- tutorial-close -->
+          <div class="tutorial-content">
+            <h3>Tutorial:</h3>
+
+            <p>Fique atento! Quando clicar no botão "Start Game", o Ralph se movimentará entre as 9 janelas do jogo</p>
+
+            <p>Você terá 60 segundos para acerta-lo o máximo de vezes que conseguir</p>
+
+            <p>Cada acerto vale um ponto... O tempo e a pontuação estão localizados no topo da tela</p>
+
+            <p class="good">Bom jogo!</p>
+          </div><!-- tutorial-content -->
+        </div>
+      </div>
 </div>
 
 <!-- Overlay de resultado -->
